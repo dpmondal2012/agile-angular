@@ -1,0 +1,10 @@
+<h1>My Insurance Company</h1>
+<p>Select an Application below:</p>
+<select [(ngModel)]="selectedLevel" (change)="selected()">
+    <option *ngFor="let item of data" [ngValue]="item">{{item.application}}</option>
+</select>
+<div class="card" *ngIf="selectedLevel">
+  <p *ngIf="selectedLevel.application">Application: {{selectedLevel.application}}</p>
+  <p *ngIf="selectedLevel.technologies">Technology Used: {{selectedLevel.technologies}}</p>
+  <p *ngIf="selectedLevel.dependency">Dependent User Journeys: {{selectedLevel.dependency}}</p>
+</div>
