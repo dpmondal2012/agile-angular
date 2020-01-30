@@ -3,6 +3,21 @@
 <select [(ngModel)]="selectedLevel" (change)="selected()">
     <option *ngFor="let item of data" [ngValue]="item">{{item.application}}</option>
 </select>
+<p *ngIf="showAddButton"><button class="btn-add-app" (click)="addAppClick()">Add Application</button>
+</p>
+<div *ngIf="!showAddButton">
+  <p>Enter Application Name:</p>
+  <input type="text" placeholder="Application Name" [(ngModel)]="appName" />
+  <p>Enter Technology Used:</p>
+  <input type="text" placeholder="Technology Name" [(ngModel)]="appTechnology" />
+  <p>Enter Dependency User Journey:</p>
+  <input type="text" placeholder="Dependency Name" [(ngModel)]="appDependency" />
+
+  <p>
+    <button (click)="appAdded()">Add this Application</button>
+    <button (click)="cancelClick()">Cancel</button>
+  </p>
+</div>
 <div class="card" *ngIf="selectedLevel">
   <p *ngIf="selectedLevel.application">Application: {{selectedLevel.application}}</p>
   <p *ngIf="selectedLevel.technologies">Technology Used: {{selectedLevel.technologies}}</p>
