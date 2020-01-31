@@ -5,6 +5,12 @@
 </select>
 <p *ngIf="showAddButton"><button class="btn-add-app" (click)="addAppClick()">Add Application</button>
 </p>
+<p>
+  <select [(ngModel)]="deleteLevel" (change)="delete()">
+    <option *ngFor="let item of data" [ngValue]="item">{{item.application}}</option>
+  </select>
+  <button (click)="deleteApp()">Delete Application</button>
+</p>
 <div *ngIf="!showAddButton">
   <p>Enter Application Name:</p>
   <input type="text" placeholder="Application Name" [(ngModel)]="appName" />

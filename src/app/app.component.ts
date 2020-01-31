@@ -9,6 +9,7 @@ export class AppComponent  {
   constructor(){ }
 
   public selectedLevel = {};
+  public deleteLevel: any = {};
   public showAddButton: boolean = true;
   public appName = "";
   public appTechnology = "";
@@ -31,6 +32,9 @@ export class AppComponent  {
   selected() {
     console.log(this.selectedLevel)
   }
+  delete() {
+    console.log(this.deleteLevel)
+  }
   addAppClick() {
     this.showAddButton = false;
   }
@@ -46,5 +50,17 @@ export class AppComponent  {
     this.appName = "";
     this.appTechnology = "";
     this.appDependency = "";
+  }
+  deleteApp() {
+    console.log(this.deleteLevel);
+    let index: number
+    this.data.map((x: any) => {
+      if(x.application !== "" && x.application === this.deleteLevel.application ) {
+        index = this.data.indexOf(x);
+      }
+    });
+    if (index !== -1) {
+      this.data.splice(index, 1);
+    }
   }
 }
